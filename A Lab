@@ -1,0 +1,43 @@
+// This is the comments for a linux lab changing permissions and privledges that I am learning.
+// You now have practical experience in using basic Linux Bash shell commands to
+// add a new user,
+// add a user to a group,
+// change user permissions on files, and
+//delete a user.
+
+//Task 1. Add a new user
+//A new employee has joined the Research department. In this task, you must add them to the system. The username assigned to them is researcher9.
+//Write a command to add a user called researcher9 to the system.
+//Next, you need to add the new user to the research_team group.
+//Use the usermod command and -g option to add researcher9 to the research_team group as their primary group.
+
+sudo adduser researcher9
+
+//passwrod 123
+
+
+//Task 2. Assign file ownership
+//The new employee, researcher9, will take responsibility for project_r. In this task, you must make them the owner of the project_r.txt file.
+//The project_r.txt file is located in the /home/researcher2/projects directory, and owned by the researcher2 user.
+//Use the chown command to make researcher9 the owner of /home/researcher2/projects/project_r.txt
+cd /home/researcher2/projects/project_r.txt
+sudo chown project_r.txt researcher9
+
+
+//Task 3. Add the user to a secondary group
+//A couple of months later, this employee's role at the organization has changed, and they are working in both the Research and the Sales departments.
+//In this task, you must add researcher9 to a secondary group (sales_team). Their primary group is still research_team.
+//Use the usermod command with the -a and -G options to add researcher9 to the sales_team group as a secondary group.
+sudo usermod -a -G sales_team researcher9
+
+//Task 4. Delete a user
+//A year later, researcher9, decided to leave the company. In this task, you must remove them from the system.
+//Run a command to delete researcher9 from the system:
+//sudo userdel researcher9
+sudo userdel researcher9
+//Userdel: Group researcher9 not removed because it is not the primary group of user researcher9.  
+//This is expected.
+
+\///delete the researcher9 group that is no longer required:
+// in order to delete a user successfully if they are in a sub group
+sudo groupdel researcher9
